@@ -12,9 +12,12 @@ interface ISingleTag {
 
 export const SingleTag: React.FC<ISingleTag> = ({ tagName }) => {
   const dispatch = useAppDispatch();
-  const removeTagHandler = (e: any) => {
-    dispatch(filteredJobsAfterRemoveTag(e.target.dataset.tag));
-    dispatch(resetTags(e.target.dataset.tag));
+  const removeTagHandler = (e: React.MouseEvent<HTMLElement>) => {
+    if (!(e.target instanceof HTMLElement)) {
+      return;
+    }
+    dispatch(filteredJobsAfterRemoveTag(e.target.dataset.tag as string));
+    dispatch(resetTags(e.target.dataset.tag as string));
   };
 
   return (

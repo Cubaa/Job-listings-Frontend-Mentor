@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useRef } from "react";
 import { MainPage } from "./Components/MainPage/MainPage";
 import { GlobalStyles } from "./GlobalStyles/GlobalStyles";
 import styled from "styled-components";
@@ -10,18 +10,18 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 library.add(fas);
 
 function App() {
-  const [isMainPageVisible, setIsMainPageVisible] = useState<boolean>(true);
-
+  const mainPageWrapper = useRef(null);
   return (
     <>
       <GlobalStyles />
       <CSSTransition
-        in={isMainPageVisible}
+        in={true}
         timeout={5000}
         classNames={"mainPage-"}
         appear={true}
+        nodeRef={mainPageWrapper}
       >
-        <MainPageWrapper>
+        <MainPageWrapper ref={mainPageWrapper}>
           <MainPage />
         </MainPageWrapper>
       </CSSTransition>

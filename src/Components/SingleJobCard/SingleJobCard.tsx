@@ -21,8 +21,9 @@ export const SingleJobCard: React.FC<ISingleJob> = (props) => {
     ...props.languages,
   ];
 
-  const getTagHandler = (e: any) => {
-    const tagName = e.target.dataset.tag;
+  const getTagHandler = (e: React.MouseEvent<HTMLElement>) => {
+    if (!(e.target instanceof HTMLElement)) return;
+    const tagName = e.target.dataset.tag as string;
 
     dispatch(setTags(tagName));
     dispatch(filteredJobsAfterAddTag(tagName));

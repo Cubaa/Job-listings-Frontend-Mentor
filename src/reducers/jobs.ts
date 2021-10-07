@@ -1,5 +1,4 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import type { RootState } from "../store/index";
 import { ISingleJob } from "../Types/jobType";
 import jobs from "../data.json";
 
