@@ -1,28 +1,14 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useRef } from "react";
 import styled from "styled-components";
 import { SingleJobCard } from "../../SingleJobCard/SingleJobCard";
 import { ISingleJob } from "../../../Types/jobType";
 import { useAppSelector } from "../../../hook";
-import { IJobListingsWidthType } from "../../../Types/jobListingsWidthType";
 
 export const JobListings: React.FC = () => {
   const jobs = useAppSelector((state) => state.jobs.jobs);
 
   const jobsList = useRef<any[]>([]);
   const jobListingsWrapper = useRef<any>();
-  const [jobListingsWidth, setJobListingsWidth] =
-    useState<IJobListingsWidthType>({
-      width: 0,
-    });
-
-  useEffect(() => {
-    function handleResize() {
-      setJobListingsWidth({
-        width: jobListingsWrapper.current.getBoundingClientRect().width,
-      });
-    }
-    window.addEventListener("resize", handleResize);
-  }, [jobListingsWrapper, jobListingsWidth.width]);
 
   return (
     <>
