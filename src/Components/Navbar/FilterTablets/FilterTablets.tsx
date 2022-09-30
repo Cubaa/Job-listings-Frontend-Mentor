@@ -1,7 +1,21 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { useAppSelector } from "../../../hook";
 import { SingleTag } from "./SingleTag/SingleTag";
+
+export const FilterTablets: FC = () => {
+  const tags = useAppSelector<string[]>((state) => state.tags.tags);
+
+  return (
+    <FilterTabletsContainer>
+      <TagsContainer>
+        {tags.map((tag: string, index: number) => {
+          return <SingleTag key={index} tagName={tag} />;
+        })}
+      </TagsContainer>
+    </FilterTabletsContainer>
+  );
+};
 
 const FilterTabletsContainer = styled.div`
   position: absolute;
@@ -25,17 +39,3 @@ const TagsContainer = styled.div`
   justify-content: flex-start;
   align-items: center;
 `;
-
-export const FilterTablets: React.FC = () => {
-  const tags = useAppSelector((state) => state.tags.tags);
-
-  return (
-    <FilterTabletsContainer>
-      <TagsContainer>
-        {tags.map((tag: string, index: number) => {
-          return <SingleTag key={index} tagName={tag} />;
-        })}
-      </TagsContainer>
-    </FilterTabletsContainer>
-  );
-};

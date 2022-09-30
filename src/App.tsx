@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { FC, useRef } from "react";
 import { MainPage } from "./Components/MainPage/MainPage";
 import { GlobalStyles } from "./GlobalStyles/GlobalStyles";
 import styled from "styled-components";
@@ -9,8 +9,8 @@ import { fas } from "@fortawesome/free-solid-svg-icons";
 
 library.add(fas);
 
-function App() {
-  const mainPageWrapper = useRef(null);
+export const App: FC = () => {
+  const mainPageWrapper = useRef<HTMLElement | null>(null);
   return (
     <>
       <GlobalStyles />
@@ -27,9 +27,7 @@ function App() {
       </CSSTransition>
     </>
   );
-}
-
-export default App;
+};
 
 const MainPageWrapper = styled.section`
   display: flex;
@@ -38,13 +36,16 @@ const MainPageWrapper = styled.section`
   width: 100%;
   min-height: 100vh;
   background-color: #f0fafb;
+
   &.mainPage--appear {
     opacity: 0;
   }
+
   &.mainPage--appear-active {
     opacity: 1;
     transition: opacity 0.5s linear;
   }
+
   &.mainPage--appear-done {
     opacity: 1;
   }

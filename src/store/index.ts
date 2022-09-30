@@ -1,7 +1,6 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { jobsSlice } from "../reducers/jobs";
 import { tagsSlice } from "../reducers/tags";
-// ...
 
 export const store = configureStore({
   reducer: {

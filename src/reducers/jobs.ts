@@ -18,8 +18,8 @@ export const jobsSlice = createSlice({
   name: "Jobs",
   initialState,
   reducers: {
-    filteredJobsAfterAddTag(state, action: PayloadAction<string>) {
-      const tagIsExist = state.tags.find((tag) => tag === action.payload);
+    filteredJobsAfterAddTag(state: IJobs, action: PayloadAction<string>) {
+      const tagIsExist = state.tags.find((tag: string) => tag === action.payload);
       if (tagIsExist) return;
       else state.tags.push(action.payload);
 
@@ -36,12 +36,13 @@ export const jobsSlice = createSlice({
       state.jobs = filteredArr;
     },
 
-    filteredJobsAfterRemoveTag(state, action: PayloadAction<string>) {
+    filteredJobsAfterRemoveTag(state: IJobs, action: PayloadAction<string>) {
       const filteredTags = state.tags.filter((tag: string) => {
         return tag !== action.payload;
       });
 
       state.tags = filteredTags;
+      
       let filteredArr = jobs.filter((job: ISingleJob) => {
         return state.tags.every((tag: string) => {
           return (
@@ -57,7 +58,6 @@ export const jobsSlice = createSlice({
   },
 });
 
-export const { filteredJobsAfterAddTag, filteredJobsAfterRemoveTag } =
-  jobsSlice.actions;
+export const { filteredJobsAfterAddTag, filteredJobsAfterRemoveTag } = jobsSlice.actions;
 
 export default jobsSlice.reducer;

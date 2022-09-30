@@ -12,13 +12,13 @@ export const tagsSlice = createSlice({
   name: "Tags",
   initialState,
   reducers: {
-    setTags(state, action: PayloadAction<string>) {
-      const tagIsExist = state.tags.find((tag) => tag === action.payload);
+    setTags(state: ITags, action: PayloadAction<string>) {
+      const tagIsExist = state.tags.find((tag: string) => tag === action.payload);
 
       if (tagIsExist) return;
       else state.tags.push(action.payload);
     },
-    resetTags(state, action: PayloadAction<string>) {
+    resetTags(state: ITags, action: PayloadAction<string>) {
       const tagIndex = state.tags.findIndex(
         (tag: string) => tag === action.payload
       );

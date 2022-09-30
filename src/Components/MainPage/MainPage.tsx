@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import { Navbar } from "../Navbar/Navbar";
 import { JobListings } from "./JobListings/JobListings";
 
-export const MainPage: React.FC = () => {
+export const MainPage: FC = () => {
   return (
     <>
       <Navbar />

@@ -1,8 +1,8 @@
-import React from "react";
+import React, { FC } from "react";
 import styled from "styled-components";
 import { FilterTablets } from "./FilterTablets/FilterTablets";
 
-export const Navbar: React.FC = () => {
+export const Navbar: FC = () => {
   return (
     <>
       <NavbarContainer>

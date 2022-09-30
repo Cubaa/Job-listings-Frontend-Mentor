@@ -1,4 +1,4 @@
-import React, { useRef } from "react";
+import React, { FC, useRef } from "react";
 import styled from "styled-components";
 import { ISingleJob } from "../../Types/jobType";
 import { useAppDispatch } from "../../hook";
@@ -10,16 +10,13 @@ interface ICard {
   featured: boolean;
 }
 
-export const SingleJobCard: React.FC<ISingleJob> = (props) => {
-  const dispatch = useAppDispatch();
-  const singleCardWrapper = useRef<HTMLDivElement>(null);
+export const SingleJobCard: FC<ISingleJob> = (props) => {
+  const { role, level, tools, languages } = props;
 
-  const allJobTags: string[] = [
-    props.role,
-    props.level,
-    ...props.tools,
-    ...props.languages,
-  ];
+  const dispatch = useAppDispatch();
+  const singleCardWrapper = useRef<HTMLDivElement | null>(null);
+
+  const allJobTags: string[] = [role, level, ...tools, ...languages];
 
   const getTagHandler = (e: React.MouseEvent<HTMLElement>) => {
     if (!(e.target instanceof HTMLElement)) return;
@@ -115,6 +112,7 @@ const MainJobInfoContainer = styled.div`
   display: flex;
   flex-direction: column;
   justify-content: center;
+
   @media (max-width: 995px) {
     width: 100%;
   }
@@ -127,6 +125,7 @@ const TagsContainer = styled.div`
   justify-content: center;
   align-items: center;
   padding-left: 20px;
+  
   @media (max-width: 995px) {
     padding-top: 10px;
     padding-left: 0px;
@@ -136,22 +135,24 @@ const TagsContainer = styled.div`
 const CompanyLogoImageWrapper = styled.div`
   display: flex;
   justify-content: center;
-
   align-items: center;
-
   min-width: 10%;
   height: 100%;
+
   img {
     width: 60%;
     height: auto;
     object-fit: cover;
   }
+
   @media (max-width: 995px) {
     justify-content: flex-start;
   }
+
   @media (max-width: 486px) {
     padding-bottom: 10px;
   }
+
   @media (max-width: 405px) {
     img {
       width: 80%;
@@ -172,11 +173,13 @@ const CompanyNameWrapper = styled.div`
     font-weight: 700;
     margin-right: 10px;
   }
+
   div {
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 10px;
+
     > span {
       color: #fff;
       padding: 5px 10px;
@@ -185,35 +188,42 @@ const CompanyNameWrapper = styled.div`
       margin: 0;
     }
   }
+
   div:nth-of-type(1) {
     background-color: #5ea4a4;
     margin-right: 10px;
   }
+
   div:nth-of-type(2) {
     background-color: hsl(180, 14%, 20%);
   }
 `;
+
 const JobPositionWrapper = styled.div`
   width: 100%;
   display: flex;
   justify-content: flex-start;
   align-items: center;
+
   span {
     color: hsl(180, 14%, 20%);
     font-weight: 700;
     font-size: 14px;
     transition: all 0.2s linear;
     cursor: pointer;
+
     &:hover {
       color: #5ea4a4;
     }
   }
+
   @media (max-width: 995px) {
     span {
       margin: 10px 0 5px 0;
     }
   }
 `;
+
 const OtherInfoAboutJobWrapper = styled.div`
   min-width: 10%;
   height: 33.33%;
@@ -234,6 +244,7 @@ const OtherInfoAboutJobContainer = styled.div`
   width: 100%;
   align-items: center;
   justify-content: flex-start;
+
   span {
     font-size: 9px;
     font-weight: 500;
@@ -245,6 +256,7 @@ const TagsWrapper = styled.div`
   width: 100%;
   display: flex;
   flex-wrap: wrap;
+
   span {
     display: flex;
     background-color: hsl(180, 52%, 96%);
@@ -266,6 +278,7 @@ const TagsWrapper = styled.div`
 const MaincardInfoWrapper = styled.div`
   min-width: 10%;
   display: flex;
+  
   @media (max-width: 486px) {
     flex-direction: column;
   }
