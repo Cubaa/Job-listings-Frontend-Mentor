@@ -1,5 +1,5 @@
 import { createSlice, PayloadAction } from "@reduxjs/toolkit";
-import { ISingleJob } from "../Types/jobType";
+import { ISingleJob } from "../interfaces/job.interface";
 import jobs from "../data.json";
 
 interface IJobs {

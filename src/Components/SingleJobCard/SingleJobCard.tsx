@@ -1,6 +1,6 @@
 import React, { FC, useRef } from "react";
 import styled from "styled-components";
-import { ISingleJob } from "../../Types/jobType";
+import { ISingleJob } from "../../interfaces/job.interface";
 import { useAppDispatch } from "../../hook";
 
 import { setTags } from "../../reducers/tags";

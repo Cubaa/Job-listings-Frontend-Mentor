@@ -1,13 +1,13 @@
 import React, { FC, useRef } from "react";
 import styled from "styled-components";
 import { SingleJobCard } from "../../SingleJobCard/SingleJobCard";
-import { ISingleJob } from "../../../Types/jobType";
+import { ISingleJob } from "../../../interfaces/job.interface";
 import { useAppSelector } from "../../../hook";
 
 export const JobListings: FC = () => {
   const jobs = useAppSelector<ISingleJob[]>((state) => state.jobs.jobs);
 
-  const jobsList = useRef<any[]>([]);
+  const jobsList = useRef<(HTMLDivElement | null)[]>([]);
   const jobListingsWrapper = useRef<HTMLDivElement | null>(null);
 
   return (
